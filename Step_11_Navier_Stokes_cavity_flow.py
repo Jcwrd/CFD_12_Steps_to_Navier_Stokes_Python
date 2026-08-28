@@ -21,7 +21,7 @@ dx = 2 / (nx - 1)
 dy = 2 / (ny - 1)
 
 nt = 1501
-save_every = 10
+save_every = 20
 
 # Create a grid
 x = np.linspace(0, 2, nx)

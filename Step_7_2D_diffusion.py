@@ -4,7 +4,7 @@ from pyevtk.hl import gridToVTK
 import shutil
 
 # Folder to save results ParaView
-output_dir = "paraview_Diffusion_results"
+output_dir = "paraview_diffusion_results"
 
 # Delete old data
 if os.path.exists(output_dir):
@@ -60,7 +60,7 @@ def math_part(u, dt, dx, dy, v, x, y, z, output_dir):
         # Save data at specified intervals for ParaView
         if it % save_every == 0:
             file_idx = it // save_every
-            filepath = os.path.join(output_dir, f"Diffusion_{file_idx:04d}")
+            filepath = os.path.join(output_dir, f"diffusion_{file_idx:04d}")
 
             gridToVTK(
                 filepath, x, y, z,
