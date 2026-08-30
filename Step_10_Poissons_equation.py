@@ -20,8 +20,8 @@ nz = 1
 dx = 2 / (nx - 1)
 dy = 2 / (ny - 1)
 
-nt = 400
-save_every = 10
+nt = 401
+save_every = 2
 
 # Arrays initialization
 p = np.zeros((nx, ny))

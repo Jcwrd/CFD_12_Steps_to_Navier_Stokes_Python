@@ -21,7 +21,7 @@ F = 1
 dx = 2 / (nx - 1)
 dy = 2 / (ny - 1)
 
-nt = 301
+nt = 601
 save_every = 5
 
 # Create a grid
