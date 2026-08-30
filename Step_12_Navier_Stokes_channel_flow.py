@@ -4,7 +4,7 @@ from pyevtk.hl import gridToVTK
 import shutil
 
 # Folder to save results ParaView
-output_dir = "paraview_chanel_results"
+output_dir = "paraview_channel_results"
 
 # Delete old data
 if os.path.exists(output_dir):
@@ -44,7 +44,7 @@ p = np.zeros((nx, ny))
 b = np.zeros((nx, ny))
 
 # Output directory for ParaView results
-output_dir = "paraview_chanel_results"
+output_dir = "paraview_channel_results"
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -73,7 +73,7 @@ def build_up_b(b, rho, dt, u, v, dx, dy):
     return b
 
 
-def pressure_poisson(p, dx, dy, b):
+def pressure(p, dx, dy, b):
     for q in range(nit):
         pn = p.copy()
         p[1:-1, 1:-1] = (((pn[2:, 1:-1] + pn[0:-2, 1:-1]) * dy ** 2 + (pn[1:-1, 2:] + pn[0:-2, 1:-1]) * dx ** 2) /
@@ -106,7 +106,7 @@ def math_part(nt, u, v, dt, dx, dy, p, rho, nu, b, x, y, z, output_dir):
         vn = v.copy()
 
         b = build_up_b(b, rho, dt, u, v, dx, dy)
-        p = pressure_poisson(p, dx, dy, b)
+        p = pressure(p, dx, dy, b)
 
         u[1:-1, 1:-1] = (un[1:-1, 1:-1] -
                          un[1:-1, 1:-1] * dt / dx *
@@ -196,7 +196,7 @@ def math_part(nt, u, v, dt, dx, dy, p, rho, nu, b, x, y, z, output_dir):
         # Save data at specified intervals for ParaView
         if it % save_every == 0:
             file_idx = it // save_every
-            filepath = os.path.join(output_dir, f"chanel_{file_idx:04d}")
+            filepath = os.path.join(output_dir, f"channel_{file_idx:04d}")
 
             gridToVTK(
                 filepath, x, y, z,

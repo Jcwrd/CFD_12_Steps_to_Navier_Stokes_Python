@@ -55,7 +55,7 @@ def build_up_b(b, rho, dt, u, v, dx, dy):
     return b
 
 
-def pressure_poisson(p, dx, dy, b):
+def pressure(p, dx, dy, b):
     for q in range(nit):
         pn = p.copy()
         p[1:-1, 1:-1] = (((pn[2:, 1:-1] + pn[0:-2, 1:-1]) * dy ** 2 +
@@ -84,7 +84,7 @@ def math_part(nt, u, v, dt, dx, dy, p, rho, nu, b, x, y, z, output_dir):
         vn = v.copy()
 
         b = build_up_b(b, rho, dt, u, v, dx, dy)
-        p = pressure_poisson(p, dx, dy, b)
+        p = pressure(p, dx, dy, b)
 
         u[1:-1, 1:-1] = (un[1:-1, 1:-1] -
                          un[1:-1, 1:-1] * dt / dx * (un[1:-1, 1:-1] - un[0:-2, 1:-1]) -
