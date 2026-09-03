@@ -202,7 +202,7 @@ def math_part(nt, u, v, dt, dx, dy, p, rho, nu, b, x, y, z, output_dir):
                 filepath, x, y, z,
                 pointData={
                     "Pressure": p[..., np.newaxis],
-                    "Velocity": (u[..., np.newaxis], v[..., np.newaxis], w),
+                    "Velocity": (u[..., np.newaxis], v[..., np.newaxis], w[..., np.newaxis]),
                 }
             )
     return u, v, w

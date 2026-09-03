@@ -79,7 +79,7 @@ def math_part(u, v, dt, dx, dy, nu, x, y, z, output_dir):
             gridToVTK(
                 filepath, x, y, z,
                 pointData={
-                    "Velocity": (u[..., np.newaxis], v[..., np.newaxis], w)
+                    "Velocity": (u[..., np.newaxis], v[..., np.newaxis], w[..., np.newaxis])
                 }
             )
     return u, v
